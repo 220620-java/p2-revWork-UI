@@ -1,0 +1,19 @@
+#header {
+    //position: absolute;
+    background-color: green;
+    height: 100px;
+}
+
+#navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    margin-top: 100px;
+    background-color: lightgray;
+}
+
+#content {
+    margin-left: 200px;
+    background-color: lightblue;
+}

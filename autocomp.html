@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="us">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles/jquery-ui.css">
+  <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
+
+  <script src="scripts/app-data.js"></script>
+  <script src="scripts/autocomp.js"></script>
+</head>
+
+<body>
+
+  <input type="text" id="universityAutoCompControl" value="">
+  <script>
+    document.getElementById("universityAutoCompControl").oninput  =  universityAutoComp;
+  </script>
+</body>
+
+</html>

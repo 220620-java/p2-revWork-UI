@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles/revWork.css">
+
+  <script src="scripts/cookie-utils.js"></script>
+  <script src="scripts/check-freelancer-credentials.js"></script>
+  <script src="scripts/jwt-utils.js"></script>
+  <script>checkFreelancerCredentials()</script>
+  <script src="scripts/jquery.js"></script>
+  <script>
+    $(function () {
+      $("#header").load("header.html");
+    });
+    $(function () {
+      $("#navigation").load("nav.html");
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div id="navigation"></div>
+  <div id="content">
+    <h1>Freelancer landing page</h1>
+    <p>Welcome <span id="personsNAme">enter name here</span></p>
+    <p>This is the landing page where you can accomplish everything
+      needed to be a successful freelancer.
+    </p>
+  </div>
+</body>
+
+</html>
