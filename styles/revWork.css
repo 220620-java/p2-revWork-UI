@@ -17,3 +17,22 @@
     margin-left: 200px;
     background-color: lightblue;
 }
+
+#mainPageheader {
+    height: 200px;
+    position: relative;
+    border: 3px solid green; 
+}
+
+.buttonContainer {
+    margin-right: 5%;
+    position:absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right:0;
+}
+
+.hiddenDiv {
+    display: none;
+}
