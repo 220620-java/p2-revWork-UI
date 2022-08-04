@@ -3,6 +3,10 @@ const pageList = {
     noContent: 'noFreelancerContent',
     jobContent: 'freelancerJobContent',
     jobDetailsContent : 'jobDetailsContent',
+
+    viewAllProfiles: 'profilesListContent',
+    editProfile : 'profileViewAndEditContent',
+
     createProfile:'createProfileContent'
   };
 
@@ -28,5 +32,10 @@ function registerComponents() {
       $("#freeNavCreateProfile").click(function () {
         createProfile();
       });
-      
+      $("#freeNavListAllProfileLink").click(function () {
+
+        console.log("in click handler for profiles");
+        viewListofAllProfiles();
+      });
+
 }

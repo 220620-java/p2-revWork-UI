@@ -19,6 +19,10 @@ $(function () {
       }
     }
 
+    // Load the logout dialog into the page.
+    // Since this is done async, we need first write the function that
+    // will place the html content in the page when it is available.
+
     function logoutDialogCallback(data) {
       let dialogDiv = document.createElement('div');
       dialogDiv.innerHTML = data;
@@ -37,6 +41,21 @@ $(function () {
     };
 
 
+    // Load the edit profile template into the page.
+
+    function loadProfileEditCallback(data) {
+        $("#profileViewAndEditContent").html(data);
+  
+        $("#profileEditBackButton").click(function(){
+          showContent(pageList.viewAllProfiles);
+        });
+      
+    }
+
+    loadPageAsync("../templates/freelancer-profile-edit.html",loadProfileEditCallback);
+
+
+    // Load the create profile template into the page.
 
     function loadCreateProfileCallback(data) {
       $("#createProfileContent").html(data);
