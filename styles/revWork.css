@@ -1,10 +1,16 @@
 #header {
-    //position: absolute;
+    position: relative;
     background-color: green;
     height: 100px;
 }
 
-#navigation {
+#freelancerPageheader {
+    position: relative;
+    background-color: green;
+    height: 100px;
+}
+
+#freelancerPageNavigation {
     position: absolute;
     top: 0;
     left: 0;
@@ -13,9 +19,21 @@
     background-color: lightgray;
 }
 
-#content {
+.content {
     margin-left: 200px;
     background-color: lightblue;
+}
+
+.initiallHidden {
+    display: none;
+}
+
+
+.jobInJobList {
+    
+    position: relative;
+    border: 3px solid green;
+    margin: 3px;
 }
 
 #mainPageheader {

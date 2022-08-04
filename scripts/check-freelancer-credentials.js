@@ -1,7 +1,7 @@
 
 function checkFreelancerCredentials() {
     if (!hasCookie('jwt')) {
-        window.location.replace('success.html');
+        window.location.replace('index.html');
         return;
     }
 

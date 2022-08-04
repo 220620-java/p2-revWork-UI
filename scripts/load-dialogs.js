@@ -27,7 +27,7 @@ $(function () {
 
         $("#dialogLoginButton").click(function () {
             $("#dialog-3").dialog("close");
-            login2();
+            login();
         });
     });
 });
