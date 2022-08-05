@@ -34,6 +34,7 @@ $(function () {
     });
 
     $("#logoutButton").click(showLogoutDialog);
+    $("#logoutDialogLogoutButton").click(logout);
   }
 
   function loadLogoutDialog() {

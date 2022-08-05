@@ -1,4 +1,10 @@
 
+function logout() {
+    deleteCookie('jwt');
+    checkJwtTokenRolesBootToMain();
+}
+
+
 function checkJwtTokenRolesBootToMain() {
     window.location.replace('index.html');
 }
