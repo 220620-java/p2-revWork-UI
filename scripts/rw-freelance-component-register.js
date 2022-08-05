@@ -12,20 +12,7 @@ const pageList = {
     jobApplication:'applyForJobContent'
   };
 
-function showContent(content) {
 
-    $( '#mainContent' ).children().each(function( i ){
-        console.log($(this).attr("id"));
-
-        if ( $(this).attr("id") == content ){
-            $(this).show();
-        }
-        else {
-            $(this).hide();
-        }
-
-    });
-}
 
 function registerComponents() {
     $("#navViewJobs").click(function () {
