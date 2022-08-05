@@ -7,7 +7,9 @@ const pageList = {
     viewAllProfiles: 'profilesListContent',
     editProfile : 'profileViewAndEditContent',
 
-    createProfile:'createProfileContent'
+    createProfile:'createProfileContent',
+
+    jobApplication:'applyForJobContent'
   };
 
 function showContent(content) {
@@ -37,5 +39,4 @@ function registerComponents() {
         console.log("in click handler for profiles");
         viewListofAllProfiles();
       });
-
 }

@@ -1,84 +1,125 @@
 $(function () {
 
-    // The nesting needed in these loads can get a little deep, so I'll 
-    // pull some functions out to improve the readability.
-    function showLogoutDialog() {
-      if ($('#freelancerLogoutDialog').dialog('isOpen')) {
-        $("#freelancerLogoutDialog").dialog("close");
-      }
-      else {
-        $(".ui-dialog-titlebar").hide();
-
-        $("#freelancerLogoutDialog").dialog("open");
-
-        $("#freelancerLogoutDialog").dialog("widget").position({
-          my: "right top",
-          at: "right bottom",
-          of: "#logoutButton"
-        });
-      }
+  // The nesting needed in these loads can get a little deep, so I'll 
+  // pull some functions out to improve the readability.
+  function showLogoutDialog() {
+    if ($('#freelancerLogoutDialog').dialog('isOpen')) {
+      $("#freelancerLogoutDialog").dialog("close");
     }
+    else {
+      $(".ui-dialog-titlebar").hide();
 
-    // Load the logout dialog into the page.
-    // Since this is done async, we need first write the function that
-    // will place the html content in the page when it is available.
+      $("#freelancerLogoutDialog").dialog("open");
 
-    function logoutDialogCallback(data) {
-      let dialogDiv = document.createElement('div');
-      dialogDiv.innerHTML = data;
-
-      $("#dialogContainer").append(dialogDiv);
-
-      $("#freelancerLogoutDialog").dialog({
-          autoOpen: false 
-      });
-
-      $("#logoutButton").click(showLogoutDialog);
-    }
-
-    function loadLogoutDialog() {
-      loadPageAsync("../templates/freelancer-logout-dialog.html",logoutDialogCallback);
-    };
-
-
-    // Load the edit profile template into the page.
-
-    function loadProfileEditCallback(data) {
-        $("#profileViewAndEditContent").html(data);
-  
-        $("#profileEditBackButton").click(function(){
-          showContent(pageList.viewAllProfiles);
-        });
-      
-    }
-
-    loadPageAsync("../templates/freelancer-profile-edit.html",loadProfileEditCallback);
-
-
-    // Load the create profile template into the page.
-
-    function loadCreateProfileCallback(data) {
-      $("#createProfileContent").html(data);
-
-      $("#profileCancelButton").click(function(){
-        showContent(pageList.noContent);
+      $("#freelancerLogoutDialog").dialog("widget").position({
+        my: "right top",
+        at: "right bottom",
+        of: "#logoutButton"
       });
     }
+  }
 
-    loadPageAsync("../templates/create-profile.html",loadCreateProfileCallback);
+  // Load the logout dialog into the page.
+  // Since this is done async, we need first write the function that
+  // will place the html content in the page when it is available.
+
+  function logoutDialogCallback(data) {
+    let dialogDiv = document.createElement('div');
+    dialogDiv.innerHTML = data;
+
+    $("#dialogContainer").append(dialogDiv);
+
+    $("#freelancerLogoutDialog").dialog({
+        autoOpen: false 
+    });
+
+    $("#logoutButton").click(showLogoutDialog);
+  }
+
+  function loadLogoutDialog() {
+    loadPageAsync("../templates/freelancer-logout-dialog.html",logoutDialogCallback);
+  };
 
 
+  // Load the edit profile template into the page.
 
+  function loadProfileEditCallback(data) {
+      $("#profileViewAndEditContent").html(data);
 
-    function loadJobDetailsCallback(data) {
-      $("#jobDetailsContent").html(data);
-
-      $("#jobDetailsBackButton").click(function(){
-        showContent(pageList.jobContent);
+      $("#profileEditBackButton").click(function(){
+        showContent(pageList.viewAllProfiles);
       });
-    }
+    
+  }
 
-    loadPageAsync("../templates/job-details.html",loadJobDetailsCallback);
+  loadPageAsync("../templates/freelancer-profile-edit.html",loadProfileEditCallback);
+
+
+  // Load the create profile template into the page.
+
+  function loadCreateProfileCallback(data) {
+    $("#createProfileContent").html(data);
+
+    $("#profileCancelButton").click(function(){
+      showContent(pageList.noContent);
+    });
+  }
+
+  loadPageAsync("../templates/create-profile.html",loadCreateProfileCallback);
+
+
+  // load the job application templage into the page.
+
+  function loadJobApplicationCallback(data) {
+    $("#applyForJobContent").html(data);
+
+    $("#jobApplicationBackButton").click(function(){
+      showContent(pageList.jobDetailsContent);
+    });
+  }
+
+  loadPageAsync("../templates/jobapplication.html",loadJobApplicationCallback);
+
+  // Load the job details stuff.
+
+  function loadJobApplicationDataIntoForm(){
+    let applyContainer = $("#jobApplicationContainer");
+    let jobData = applyContainer.data("mydata");
+
+    let jobObject = JSON.parse(jobData);
+
+    // <p>Employer Name: <span id="jobApplicationEmplyerName"></span></p>
+    // <p>Job Title: <span id="jobApplicationJobTitle"></span></p>
+    // <p>Required skills: <span id="jobApplicationRequiredSkills"></span></p>
+    // <p>Description: <span id="jobApplicationJobDescription"></span></p>
+    // <p>Pay Rate: <span id="jobApplicationPayRate"></span></p>
+
+    //{"id":null,"name":"a","email":"b","username":"c","password":"d"},
+    //"name":"job","skills":"req skills","description":"desc","payrate":"12.2","istaken":null}
+
+    $("#jobApplicationEmplyerName").text(jobObject["employerid"]["name"]);
+    $("#jobApplicationJobTitle").text(jobObject["name"]);
+    $("#jobApplicationRequiredSkills").text(jobObject["skills"]);
+    $("#jobApplicationJobDescription").text(jobObject["description"]);
+    $("#jobApplicationPayRate").text(jobObject["payrate"]);
+
+    console.log(jobData);
+  }
+
+  function loadJobDetailsCallback(data) {
+    $("#jobDetailsContent").html(data);
+
+    $("#jobDetailsBackButton").click(function(){
+      showContent(pageList.jobContent);
+    });
+
+    $("#jobDetailsApplyButton").click(function(){
+      loadJobApplicationDataIntoForm();
+      showContent(pageList.jobApplication);
+    });
+  }
+
+  loadPageAsync("../templates/job-details.html",loadJobDetailsCallback);
 
     // function loadLogoutDialog() {
 
