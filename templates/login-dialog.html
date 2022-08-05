@@ -2,20 +2,22 @@
     <fieldset>
         <legend>I'm a:</legend>
 
-        <input type="radio" id="huey" name="drone" value="huey" checked>
-        <label for="huey">Freelancer</label>
+        <label for="loginDialogFreelancerRadio">Freelancer</label>
+        <input type="radio" id="loginDialogFreelancerRadio" name="loginTypeRadioGroup" value="freelancer" checked>
 
-        <input type="radio" id="dewey" name="drone" value="dewey">
-        <label for="dewey">Employer</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
 
+        <label for="loginDialogEmployerRadio">Employer</label>
+        <input type="radio" id="loginDialogEmployerRadio" name="loginTypeRadioGroup" value="employer">
+        
     </fieldset>
 
 
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required id="userNameElem">
+    <input type="text" placeholder="Enter Username" name="uname" required id="loginDialogUsernameText">
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required id="password">
+    <input type="password" placeholder="Enter Password" name="psw" required id="loginDialogPasswordText">
 
     <button type="button" id="dialogLoginButton">Login</button>
     <label>
@@ -26,5 +28,9 @@
     <div class="container" style="background-color:#f1f1f1">
         <button type="button" id="loginCancelButton" class="cancelbtn">Cancel</button>
         <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+
+    <div>
+        <span id="loginDialogErrorMessage"></span>
     </div>
 </div>

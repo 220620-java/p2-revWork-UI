@@ -117,6 +117,7 @@ function viewEmployerJobs() {
 
   let response = [obj1,obj2,obj3];
 
+  $("#employerJobListDiv").empty();
 
   getjobTemplateAndThenLoadJobs(response);
 }

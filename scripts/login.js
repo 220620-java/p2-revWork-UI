@@ -1,13 +1,50 @@
+
+function setLoginErrorMessage(msg) {
+    $("#loginDialogErrorMessage").text(msg);
+}
+
+function resetLoginDialog() {
+    $("#loginDialogUsernameText").val("");
+    $("#loginDialogPasswordText").val("");
+    setLoginErrorMessage("");
+
+    $('#dialogLoginButton').prop('disabled', true);
+}
+
+function validateLoginDialog() {
+    // The only validation we need it to ensure that both username and
+    // password are not null. If that is the case, enable the login button.
+    // Otherwise disable the button.
+    let username = $("#loginDialogUsernameText").val();
+    let password = $("#loginDialogPasswordText").val();
+
+    if ( username != "" && password != "" ) {
+        $('#dialogLoginButton').prop('disabled', false);
+    }
+    else {
+        $('#dialogLoginButton').prop('disabled', true);
+    }
+}
+
 function login(){
     console.log('hello from login');
 
-    let userNameElem = document.getElementById("userNameElem");
-    let passwordElem = document.getElementById("password");
+    let username = $("#loginDialogUsernameText").val();
+    let password = $("#loginDialogPasswordText").val();
 
-    console.log('username: ' + userNameElem.value);
-    console.log('password: ' + passwordElem.value);
+    let loginForFreelancer = $("#loginDialogFreelancerRadio").val();
+    let loginForEmployer = $("#loginDialogEmployerRadio").val();
+    let loginRole = $("input:radio[name ='loginTypeRadioGroup']:checked").val();
 
-    let obj = {"username":userNameElem.value,"password":passwordElem.value};
+    console.log('username: ' + username);
+    console.log('password: ' + password);
+    console.log('login for freelancer: ' + loginForFreelancer);
+    console.log('login for employer: ' + loginForEmployer);
+    console.log('selected item: ' + loginRole);
+
+    
+
+    let obj = {"username":username,"password":password,"role":loginRole};
 
     const myJSON = JSON.stringify(obj);
     console.log(myJSON);
@@ -21,7 +58,9 @@ function login(){
     //xhttp.addEventListener('readystatechange', receiveData);
 
     // STEP 3: Open the request
-    xhttp.open('POST', 'http://127.0.0.1:8080/login' );
+    let url = restURL;
+    url += '/login';
+    xhttp.open('POST', url );
     xhttp.setRequestHeader("Content-Type", "application/json");
     // STEP 4: Send the request
     //xhttp.send();
@@ -49,14 +88,28 @@ function login(){
                 // responseText property is the response body as a string
                 let response = xhttp.responseText;
                 console.log(response); // before we use JSON.parse (still a string)
-                //response = JSON.parse(response);
-                console.log(response); // after we use JSON.parse (now it's an object)
-                populateData(response);
 
-                window.location.replace('success.html');
+                const myArray = response.split(":"); 
+                console.log(myArray[1]);
+
+                let jwtToken = myArray[1];
+
+                setCookie('jwt',jwtToken,365);
+
+                if( $('#loginDialogFreelancerRadio').is(':checked')) {
+                    window.location.replace('freelancer-skeleton.html');
+                }
+                else {
+                    window.location.replace('employer-skeleton.html');
+                }
+
+                //response = JSON.parse(response);
+                //console.log(response); // after we use JSON.parse (now it's an object)
+                //populateData(response);
+
+                //window.location.replace('success.html');
             } else {
-                // Ready state is DONE but status code is not "OK"
-                dataSection.innerHTML = 'It Got Away!';
+                setLoginErrorMessage("The username or password is incorrect. Please try again.")
             }
         } else {
             // Ready state is not DONE

@@ -1,13 +1,12 @@
 $(function () {
-    // async. load the dialog template
-    $.get("../templates/login-dialog.html", function (data) {
-        // Once the file is available, we need to
 
+    // Load the Login dialog.
+    loadPageAsync('../templates/login-dialog.html',loadLoginDialogCallback);
+
+    function loadLoginDialogCallback(componentHtml) {
         // Step 1) create a place the html into a node in the DOM. There is a
         // hidden container set up to keep it from appering on the page.
-        let dialogDiv = document.createElement('div');
-        dialogDiv.innerHTML = data;
-
+        let dialogDiv = $.parseHTML(componentHtml);
         $("#dialogContainer").append(dialogDiv);
 
         // Step 2) have jquery ui convert the new node to a dialog widget.
@@ -18,26 +17,31 @@ $(function () {
         // Step 3) set up event handlers for the buttons (on the page
         // and in the dialog).
         $("#loginButton").click(function () {
+            resetLoginDialog();
             $("#dialog-3").dialog("open");
         });
 
+        $("#loginDialogUsernameText").on("input",validateLoginDialog);
+        $("#loginDialogPasswordText").on("input",validateLoginDialog);
+
         $("#loginCancelButton").click(function () {
             $("#dialog-3").dialog("close");
+            setLoginErrorMessage("");
         });
 
         $("#dialogLoginButton").click(function () {
-            $("#dialog-3").dialog("close");
+            //$("#dialog-3").dialog("close");
             login();
         });
-    });
-});
 
-$(function () {
-    $.get("../templates/register-dialog.html", function (data) {
+    }
 
-        let dialogDiv = document.createElement('div');
-        dialogDiv.innerHTML = data;
 
+    // Load the signup dialog.
+    loadPageAsync('../templates/register-dialog.html',loadRegisterDialogCallback);
+
+    function loadRegisterDialogCallback(componentHtml) {
+        let dialogDiv = $.parseHTML(componentHtml);
         $("#dialogContainer").append(dialogDiv);
 
         $("#dialog-4").dialog({
@@ -54,6 +58,5 @@ $(function () {
                 $("#dialog-4").dialog("open");
             }
         });
-    });
-
+    };
 });

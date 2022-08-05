@@ -29,6 +29,7 @@ function loadJobsIntoPage(response) {
 
 
     function lodeJobTemplateCallback(data) {
+        $("#employerJobListDiv").empty();
 
         for ( job of response ) {
 
