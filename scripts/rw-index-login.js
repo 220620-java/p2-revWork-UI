@@ -97,10 +97,10 @@ function login(){
                 setCookie('jwt',jwtToken,365);
 
                 if( $('#loginDialogFreelancerRadio').is(':checked')) {
-                    window.location.replace('freelancer-skeleton.html');
+                    window.location.replace('freelancer.html');
                 }
                 else {
-                    window.location.replace('employer-skeleton.html');
+                    window.location.replace('employer.html');
                 }
 
                 //response = JSON.parse(response);

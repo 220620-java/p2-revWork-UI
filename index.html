@@ -6,14 +6,22 @@
   <link rel="stylesheet" href="styles/jquery-ui.css">
   <link rel="stylesheet" href="styles/jquery-ui.theme.css">
   <link rel="stylesheet" href="styles/revWork.css">
+
+  <!-- Before doing anything else, check the visitors is already logged in
+    if so forward them to the appriate page instead. -->
+  <script src="scripts/rw-common-cookie-utils.js"></script>
+  <script src="scripts/rw-common-jwt-utils.js"></script>
+  <script src="scripts/rw-common-credential-utils.js"></script>
+  <script src="scripts/rw-index-checkifloggedin.js"></script>
+
   <script src="scripts/jquery.js"></script>
   <script src="scripts/jquery-ui.js"></script>
 
-  <script src="scripts/rw-app-data.js"></script>
-  <script src="scripts/cookie-utils.js"></script>
-  <script src="scripts/login.js"></script>
-  <script src="scripts/rw-component-utils.js"></script>
-  <script defer src="scripts/load-dialogs.js"></script>
+  <script src="scripts/rw-common-app-data.js"></script>
+  <script src="scripts/rw-common-component-utils.js"></script>
+  <script src="scripts/rw-index-login.js"></script>
+
+  <script defer src="scripts/rw-index-loadcomponents.js"></script>
 
 </head>
 
