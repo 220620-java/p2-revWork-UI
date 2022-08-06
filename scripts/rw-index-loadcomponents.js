@@ -12,7 +12,10 @@ $(function () {
         // Step 2) have jquery ui convert the new node to a dialog widget.
         $("#dialog-3").dialog({
             autoOpen: false, 
-            modal : true
+            modal : true,
+            title : "",
+            draggable: false,
+            width: 500
         });
 
         // Step 3) set up event handlers for the buttons (on the page
@@ -25,10 +28,12 @@ $(function () {
         $("#loginDialogUsernameText").on("input",validateLoginDialog);
         $("#loginDialogPasswordText").on("input",validateLoginDialog);
 
-        $("#loginCancelButton").click(function () {
+
+
+/*         $("#loginCancelButton").click(function () {
             $("#dialog-3").dialog("close");
             setLoginErrorMessage("");
-        });
+        }); */
 
         $("#dialogLoginButton").click(function () {
             //$("#dialog-3").dialog("close");
@@ -47,16 +52,30 @@ $(function () {
 
         $("#dialog-4").dialog({
             autoOpen: false ,
-            modal : true
+            modal : true,
+            title : "",
+            draggable: false,
+            width: 500
         });
+
+        $("#registerDialogUsername").on("input",validateRegisterDialog);
+        $("#registerDialogPassword").on("input",validateRegisterDialog);
+        $("#RegisterDialogFullNname").on("input",validateRegisterDialog);
+        $("#registerDialogEmail").on("input",validateRegisterDialog);
 
         $("#signUpButton").click(function () {
             if ($('#dialog-4').dialog('isOpen')) {
                 $("#dialog-4").dialog("close");
             }
             else {
+                resetRegisterDialog();
                 $("#dialog-4").dialog("open");
             }
+        });
+
+        $("#registerDialogRegisterButton").click(function () {
+
+            registerNewAccount();
         });
     };
 });

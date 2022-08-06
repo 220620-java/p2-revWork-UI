@@ -4,12 +4,16 @@
     height: 100px;
 }
 
-#freelancerPageheader {
-    position: relative;
-    background-color: green;
-    height: 100px;
-}
 
+/* #freelancerPageheader {
+    position: relative;
+     background-color: green;
+    height: 100px; 
+} */
+
+#loginDialogDropdown{
+    margin-bottom: 10px;
+}
 .pageNavigation {
     position: absolute;
     top: 0;
@@ -19,16 +23,16 @@
     background-color: lightgray;
 }
 
-#employerPageheader {
+/* #employerPageheader {
     position: relative;
     background-color: green;
     height: 100px;
-}
+} */
 
-.content {
+ .content {
     margin-left: 200px;
-    background-color: lightblue;
-}
+    /* background-color: lightblue; */
+} 
 
 .initiallHidden {
     display: none;

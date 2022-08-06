@@ -1,32 +1,43 @@
 <div id="dialog-4" title="This is a title.">
+
     <fieldset class="field">
-        <label for="name" id="name-label">Name <input type="text" id="name" placeholder="Enter your name"
+        <label for="registerDialogRoleDropdown">Freelancer or employer?</label>
+        <select name="position" id="registerDialogRoleDropdown" class="inline dropdown" required>
+            <option selected value="1">Freelancer</option>
+            <option value="2">Employer</option>
+        </select>
+        <label for="RegisterDialogFullNname" id="name-label">Name <input type="text" id="RegisterDialogFullNname" placeholder="Enter your name"
                 required></label>
-        <label for="email" id="email-label">Email </label> <input type="email" id="email"
+        <label for="registerDialogEmail" id="email-label">Email </label> <input type="email" id="registerDialogEmail"
             placeholder="Enter your Email" required></label>
-        <label for="username" id="username-label"></label>Username <input type="username" id="username"
+        <label for="registerDialogUsername" id="username-label"></label>Username <input type="username" id="registerDialogUsername"
             placeholder="username" required></label>
-        <label for="password" id="password-label"></label>Password <input type="password" id="password"
+        <label for="registerDialogPassword" id="password-label"></label>Password <input type="password" id="registerDialogPassword"
             placeholder="password" required></label>
     </fieldset>
     <fieldset class="field">
-        <label for="dropdown">
-            <p class="how">How did you hear about us?</p>
-            <select name="position" id="dropdown" class="inline dropdown" required>
-                <option disabled selected value>Please select one</option>
-                <option value="2">Referral (Please tell us who down below)</option>
-                <option value="3">Social Media</option>
-                <option value="4">School</option>
+        <label for="registerDialogDropdown">
+            <p class="how">What is your experience level?</p>
+            <select name="position" id="registerDialogDropdown" class="inline dropdown" required>
+                <option disabled selected value="1">Please select one</option>
+                <option value="2">Beginner</option>
+                <option value="3">Intermediate</option>
+                <option value="4">Proficient</option>
+                <option value="5">Expert</option>
             </select>
     </fieldset>
 
     <fieldset>
         <label for="">
-            <textarea name="bio" id="bio" cols="30" rows="10"
+            <textarea name="bio" id="registerDialogBio" cols="30" rows="10"
                 placeholder="Tell us a little about yourself..."></textarea>
         </label>
     </fieldset>
     <fieldset class="field">
-        <input type="submit" value="submit" class="submit">
+        <input type="submit" value="Register" class="submit" id="registerDialogRegisterButton">
     </fieldset>
+
+    <div>
+        <span id="registerDialogErrorMessage"></span>
+    </div> 
 </div>

@@ -1,4 +1,3 @@
-
 function setLoginErrorMessage(msg) {
     $("#loginDialogErrorMessage").text(msg);
 }
@@ -15,6 +14,9 @@ function validateLoginDialog() {
     // The only validation we need it to ensure that both username and
     // password are not null. If that is the case, enable the login button.
     // Otherwise disable the button.
+
+    console.log("validating login input");
+
     let username = $("#loginDialogUsernameText").val();
     let password = $("#loginDialogPasswordText").val();
 
@@ -32,15 +34,20 @@ function login(){
     let username = $("#loginDialogUsernameText").val();
     let password = $("#loginDialogPasswordText").val();
 
-    let loginForFreelancer = $("#loginDialogFreelancerRadio").val();
-    let loginForEmployer = $("#loginDialogEmployerRadio").val();
-    let loginRole = $("input:radio[name ='loginTypeRadioGroup']:checked").val();
+    //let loginForFreelancer = $("#loginDialogFreelancerRadio").val();
+    //let loginForEmployer = $("#loginDialogEmployerRadio").val();
+    //let loginRole = $("input:radio[name ='loginTypeRadioGroup']:checked").val();
+
+    let loginRole = $('#loginDialogDropdown').find(":selected").text().toLowerCase();
+
+    
 
     console.log('username: ' + username);
     console.log('password: ' + password);
-    console.log('login for freelancer: ' + loginForFreelancer);
-    console.log('login for employer: ' + loginForEmployer);
-    console.log('selected item: ' + loginRole);
+    console.log('loginRole: ' + loginRole);
+    // console.log('login for freelancer: ' + loginForFreelancer);
+    // console.log('login for employer: ' + loginForEmployer);
+    //console.log('selected item: ' + loginRole);
 
     
 
@@ -49,7 +56,7 @@ function login(){
     const myJSON = JSON.stringify(obj);
     console.log(myJSON);
 
-   // 4 steps to making an AJAX call
+    // 4 steps to making an AJAX call
     // STEP 1: Create an XML Http Request object
     let xhttp = new XMLHttpRequest();
 
@@ -70,18 +77,9 @@ function login(){
 
     // This needs to be an inner function so that it has closure to xhttp.
     function receiveData() {
-        /*
-            Different ready states of an XMLHttpRequest object
-            0: UNSENT
-            1: OPENED
-            2: HEADERS RECEIVED
-            3: LOADING
-            4: DONE
-        */
-        if (xhttp.readyState === 4) { // once we get a response
-            // Emptying out the div before inserting new data.
-            //let dataSection = document.getElementById('data');
-            //dataSection.innerHTML = '';
+
+        if (xhttp.readyState === 4) { 
+
 
             if (xhttp.status === 200) { // check if it was successful
                 // Ready state is DONE, HTTP status code is "OK"
@@ -112,10 +110,7 @@ function login(){
                 setLoginErrorMessage("The username or password is incorrect. Please try again.")
             }
         } else {
-            // Ready state is not DONE
-            /*
-                Can have some sort of "loading" action
-            */
+
         }
-    }
+    } 
 }

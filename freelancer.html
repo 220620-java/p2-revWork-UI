@@ -1,52 +1,57 @@
-<html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="styles/jquery-ui.css">
-  <link rel="stylesheet" href="styles/jquery-ui.theme.css">
-
-  <link rel="stylesheet" href="styles/revWork.css">
-
-  <!-- Before doing anything else, check the visitors jwt token -->
-  <script src="scripts/rw-common-cookie-utils.js"></script>
-  <script src="scripts/rw-common-jwt-utils.js"></script>
-  <script src="scripts/rw-common-credential-utils.js"></script>
-  <script src="scripts/rw-freelance-verifyroles.js"></script>
-
-  <script src="scripts/jquery.js"></script>
-  <script src="scripts/jquery-ui.js"></script>
-
-  <script src="scripts/rw-common-component-utils.js"></script>
-  <script src="scripts/rw-freelance-comp-jobs.js"></script>
-  <script src="scripts/rw-freelance-comp-profiles.js"></script>
+    <meta charset="UTF-8" />
+    
+    <title>RevWork Employer</title>
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+    <link rel="stylesheet" href="styles/styles3.css" />
+    <link rel="stylesheet" href="styles/revWork.css">
   
-
-  <script src="scripts/rw-freelance-component-register.js"></script>
-  <script defer src="scripts/rw-freelance-load-components.js"></script>
+    <!-- Before doing anything else, check the visitors jwt token -->
+    <script src="scripts/rw-common-cookie-utils.js"></script>
+    <script src="scripts/rw-common-jwt-utils.js"></script>
+    <script src="scripts/rw-common-credential-utils.js"></script>
+    <script src="scripts/rw-freelance-verifyroles.js"></script>
+  
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+  
+    <script src="scripts/rw-common-component-utils.js"></script>
+    <script src="scripts/rw-freelance-comp-jobs.js"></script>
+    <script src="scripts/rw-freelance-comp-profiles.js"></script>
+    
+  
+    <script src="scripts/rw-freelance-component-register.js"></script>
+    <script defer src="scripts/rw-freelance-load-components.js"></script>
 </head>
 
 <body>
-  <div id="freelancerPageheader"></div>
-  <div class="hiddenDiv" id="dialogContainer"></div>
-  <div id="freelancerPageNavigation" class="pageNavigation"></div>
-  <div class="content" id="bonus"></div>
-  <div class="content" id="mainContent">
-    <div id="noFreelancerContent">
-      <h1>Freelancer landing page</h1>
-      <p>Welcome <span id="personsNAme">enter name here</span></p>
-      <p>This is the landing page where you can accomplish everything
-        needed to be a successful freelancer.
-      </p>
+
+    <header class="container" id="freelancerPageheader">
+<!--         <div class="Welcome">Welcome</div>
+        <button class="button_one">Sign up</button> -->
+    </header>
+    <section class="container_two" id="freelancerPageNavigation">
+    </section>
+    <div class="content container_three" id="mainContent" >
+        
+      <div id="noFreelancerContent">
+        <h1>Freelancer landing page</h1>
+        <p>Welcome <span id="personsNAme">enter name here</span></p>
+        <p>This is the landing page where you can accomplish everything
+          needed to be a successful freelancer.
+        </p>
+      </div>
+      <div id="freelancerJobContent" class="initiallHidden"></div>
+      <div id="jobDetailsContent" class="initiallHidden"></div>
+      <div id="profilesListContent" class="initiallHidden"></div>
+      <div id="profileViewAndEditContent" class="initiallHidden"></div>
+      <div id="createProfileContent" class="initiallHidden"></div>
+      <div id="applyForJobContent" class="initiallHidden"></div>
+      <div class="hiddenDiv" id="dialogContainer"></div>
     </div>
-    <div id="freelancerJobContent" class="initiallHidden"></div>
-    <div id="jobDetailsContent" class="initiallHidden"></div>
-    <div id="profilesListContent" class="initiallHidden"></div>
-    <div id="profileViewAndEditContent" class="initiallHidden"></div>
-    <div id="createProfileContent" class="initiallHidden"></div>
-    <div id="applyForJobContent" class="initiallHidden"></div>
 
-  </div>
-
-
+    
 </body>
-
-</html>

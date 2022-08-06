@@ -31,6 +31,8 @@ $(function () {
         at: "right bottom",
         of: "#logoutButton"
       });
+
+
     }
   }
 
@@ -38,6 +40,8 @@ $(function () {
     $("#employerPageheader").html(conpHtml);
 
     $("#logoutButton").click(showLogoutDialog);
+    $("#employerHeaderLogoutButton").click(logout);
+    
   }
 
   loadPageAsync('../templates/emp-header.html', loadHeaderCallback);

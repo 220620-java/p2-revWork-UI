@@ -1,16 +1,24 @@
 <div id="dialog-3" title="This is a title.">
-    <fieldset>
+<!--     <fieldset class="loginDialogFieldSet loginRadio">
         <legend>I'm a:</legend>
 
-        <label for="loginDialogFreelancerRadio">Freelancer</label>
-        <input type="radio" id="loginDialogFreelancerRadio" name="loginTypeRadioGroup" value="freelancer" checked>
+        <label class="loginRadio" for="loginDialogFreelancerRadio">Freelancer</label>
+        <input class="loginRadio" type="radio" id="loginDialogFreelancerRadio" name="loginTypeRadioGroup" value="freelancer" checked></p>
+        
+        
 
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <label for="loginDialogEmployerRadio">Employer</label>
-        <input type="radio" id="loginDialogEmployerRadio" name="loginTypeRadioGroup" value="employer">
+        <label class="loginRadio" class="loginRadio" for="loginDialogEmployerRadio">Employer</label>
+        <input class="loginRadio" type="radio" id="loginDialogEmployerRadio" name="loginTypeRadioGroup" value="employer">
         
-    </fieldset>
+    </fieldset> -->
+    <fieldset class="field">
+    <label for="loginDialogDropdown">Freelancer or employer?</label>
+    <select name="position" id="loginDialogDropdown" class="inline dropdown" required>
+        <option selected value>Freelancer</option>
+        <option value="2">Employer</option>
+    </select>
 
 
     <label for="uname"><b>Username</b></label>
@@ -18,9 +26,16 @@
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required id="loginDialogPasswordText">
+    </fieldset>
+    <fieldset class="field">
+        <input type="submit" id="dialogLoginButton" value="Login" class="submit">
+    </fieldset>
 
-    <button type="button" id="dialogLoginButton">Login</button>
-    <label>
+    <div>
+        <span id="loginDialogErrorMessage"></span>
+    </div> 
+    <!-- <button type="button" id="dialogLoginButton">Login</button> -->
+<!--     <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
 
@@ -32,5 +47,5 @@
 
     <div>
         <span id="loginDialogErrorMessage"></span>
-    </div>
+    </div> -->
 </div>
