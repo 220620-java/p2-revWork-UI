@@ -11,7 +11,8 @@ $(function () {
 
         // Step 2) have jquery ui convert the new node to a dialog widget.
         $("#dialog-3").dialog({
-            autoOpen: false 
+            autoOpen: false, 
+            modal : true
         });
 
         // Step 3) set up event handlers for the buttons (on the page
@@ -46,8 +47,7 @@ $(function () {
 
         $("#dialog-4").dialog({
             autoOpen: false ,
-            width: 200,
-            height: 200
+            modal : true
         });
 
         $("#signUpButton").click(function () {

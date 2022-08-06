@@ -1,3 +1,32 @@
 <div id="dialog-4" title="This is a title.">
-    <p>Not implemented yet.</p>
+    <fieldset class="field">
+        <label for="name" id="name-label">Name <input type="text" id="name" placeholder="Enter your name"
+                required></label>
+        <label for="email" id="email-label">Email </label> <input type="email" id="email"
+            placeholder="Enter your Email" required></label>
+        <label for="username" id="username-label"></label>Username <input type="username" id="username"
+            placeholder="username" required></label>
+        <label for="password" id="password-label"></label>Password <input type="password" id="password"
+            placeholder="password" required></label>
+    </fieldset>
+    <fieldset class="field">
+        <label for="dropdown">
+            <p class="how">How did you hear about us?</p>
+            <select name="position" id="dropdown" class="inline dropdown" required>
+                <option disabled selected value>Please select one</option>
+                <option value="2">Referral (Please tell us who down below)</option>
+                <option value="3">Social Media</option>
+                <option value="4">School</option>
+            </select>
+    </fieldset>
+
+    <fieldset>
+        <label for="">
+            <textarea name="bio" id="bio" cols="30" rows="10"
+                placeholder="Tell us a little about yourself..."></textarea>
+        </label>
+    </fieldset>
+    <fieldset class="field">
+        <input type="submit" value="submit" class="submit">
+    </fieldset>
 </div>

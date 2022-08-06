@@ -1,40 +1,120 @@
-<!doctype html>
-<html lang="us">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="styles/jquery-ui.css">
-  <link rel="stylesheet" href="styles/jquery-ui.theme.css">
-  <link rel="stylesheet" href="styles/revWork.css">
+    <meta charset="UTF-8" />
 
-  <!-- Before doing anything else, check the visitors is already logged in
-    if so forward them to the appriate page instead. -->
-  <script src="scripts/rw-common-cookie-utils.js"></script>
-  <script src="scripts/rw-common-jwt-utils.js"></script>
-  <script src="scripts/rw-common-credential-utils.js"></script>
-  <script src="scripts/rw-index-checkifloggedin.js"></script>
+    <title>RevWork HomePage</title>
+    <link rel="stylesheet" href="styles/styles1.css" />
+    <link rel="stylesheet" href="styles/styles2.css">
 
-  <script src="scripts/jquery.js"></script>
-  <script src="scripts/jquery-ui.js"></script>
 
-  <script src="scripts/rw-common-app-data.js"></script>
-  <script src="scripts/rw-common-component-utils.js"></script>
-  <script src="scripts/rw-index-login.js"></script>
-
-  <script defer src="scripts/rw-index-loadcomponents.js"></script>
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+    <link rel="stylesheet" href="styles/revWork.css">
+  
+    <!-- Before doing anything else, check the visitors is already logged in
+      if so forward them to the appriate page instead. -->
+    <script src="scripts/rw-common-cookie-utils.js"></script>
+    <script src="scripts/rw-common-jwt-utils.js"></script>
+    <script src="scripts/rw-common-credential-utils.js"></script>
+    <script src="scripts/rw-index-checkifloggedin.js"></script>
+  
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+  
+    <script src="scripts/rw-common-app-data.js"></script>
+    <script src="scripts/rw-common-component-utils.js"></script>
+    <script src="scripts/rw-index-login.js"></script>
+  
+    <script defer src="scripts/rw-index-loadcomponents.js"></script>
 
 </head>
 
 <body>
-  <div id="mainPageheader">
-    <span class="buttonContainer">
-
-      <input id="loginButton" type="button" value="Login">
-      <input id="signUpButton" type="button" value="Sign Up">
-    </span>
-  </div>
-  <div class="hiddenDiv" id="dialogContainer"></div>
-
+    <div class="initiallHidden" id="dialogContainer"></div>
+    <header class="container">
+        <div class="h_one">
+            <img class="logo"
+                src="https://images.pexels.com/photos/1038940/pexels-photo-1038940.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="logo" />
+        </div>
+        <div class="h_two">
+            <a href="" class="secondary">About Us</a>
+            <a href="#" class="secondary" id="loginButton">Login</a>
+            <a href="" class="secondary">Contact</a>
+        </div>
+        <div class="h_three">
+            <p class="hero">For FreeLancer and Employers</p>
+            <p class="secondary">
+                This website is for employers and FreeLancer a like
+                to come together and start a new begining 
+            </p>
+            <button class="button_one" id="signUpButton" >Sign up</button>
+        </div>
+        <div class="h_four">
+            <img class="image_one"
+                src="https://images.pexels.com/photos/12463101/pexels-photo-12463101.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="background picture" />
+        </div>
+    </header>
+    <section class="container_two">
+        <h2 class="section_two_text">Welcome to the RevWork!</h2>
+        <div class="box">
+            <img class="box_image"
+                src="https://images.pexels.com/photos/13009540/pexels-photo-13009540.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="ugly photo" />
+            <span class="para">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem quod explicabo delectus, eaque et ullam deleniti ipsum.
+                Illum dicta excepturi minima, saepe similique eius. Doloremque,
+                dolorum! Corporis dolorem praesentium neque.
+            </span>
+        </div>
+        <div class="box">
+            <img class="box_image"
+                src="https://images.pexels.com/photos/12995012/pexels-photo-12995012.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="ugly photo" />
+            <span class="para">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem quod explicabo delectus, eaque et ullam deleniti ipsum.
+                Illum dicta excepturi minima, saepe similique eius. Doloremque,
+                dolorum! Corporis dolorem praesentium neque.
+            </span>
+        </div>
+        <div class="box">
+            <img class="box_image"
+                src="https://images.pexels.com/photos/12428359/pexels-photo-12428359.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="ugly photo" />
+            <span class="para">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem quod explicabo delectus, eaque et ullam deleniti ipsum.
+                Illum dicta excepturi minima, saepe similique eius. Doloremque,
+                dolorum! Corporis dolorem praesentium neque.
+            </span>
+        </div>
+        <div class="box">
+            <img class="box_image"
+                src="https://images.pexels.com/photos/12270237/pexels-photo-12270237.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                alt="ugly photo" />
+            <span class="para">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem quod explicabo delectus, eaque et ullam deleniti ipsum.
+                Illum dicta excepturi minima, saepe similique eius. Doloremque,
+                dolorum! Corporis dolorem praesentium neque.
+            </span>
+        </div>
+    </section>
+    <section class="container_three">
+        <div>
+            <p>
+                If at first you dont succeed, then skydiving is defintely not for you.
+            </p>
+            <br />
+            <p class="me">- James, Franklyn, Michael</p>
+        </div>
+    </section>
+    
 </body>
 
 </html>
