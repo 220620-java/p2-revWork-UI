@@ -4,6 +4,10 @@
     height: 100px;
 }
 
+/* #employerDefaultContent {
+    background-color: #00ff0088;
+    height: 100%;
+} */
 
 /* #freelancerPageheader {
     position: relative;
@@ -30,7 +34,7 @@
 } */
 
  .content {
-    margin-left: 200px;
+    margin-left: 213px;
     /* background-color: lightblue; */
 } 
 
@@ -41,10 +45,10 @@
 
 .jobInJobList {
     
-    position: relative;
+/*     position: relative;
     border: 3px solid green;
-    margin: 3px;
-}
+    margin: 3px;*/
+} 
 
 #mainPageheader {
     height: 200px;
@@ -64,3 +68,84 @@
 .hiddenDiv {
     display: none;
 }
+
+
+.employerAddKobContainer {
+    display: grid;
+     grid-auto-rows: auto;
+     grid-auto-columns: auto;
+    
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+      grid-template-columns: 200px 400px ;
+      
+  /* grid-template-rows: repeat(3, 100px); */
+  grid-column-gap: 5px; 
+  background-color: #2f3032aa;
+  padding-top: 15 px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+      
+}
+    
+.employerAddKobContainer p {
+  width: 200px;
+  height: auto;
+
+  margin-left: auto; 
+  margin-right: 0;
+  float: right;
+
+}
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.doubleAlignmentClearer {
+height: 0;
+clear: both;
+}
+
+.profileListEven {
+    background-color: #ffffff;
+}
+
+.profileListOdd {
+    background-color: #888888;
+}
+
+.fogBackground {
+    background-color: #2f3032aa;
+    padding: 20px 20px 20px 20px;
+}
+
+.freelancerJobGrid {
+    display: grid; 
+    grid-template-columns: 200px 1fr; 
+    grid-template-rows: min-content min-content min-content min-content; 
+    gap: 4px 4px; 
+    grid-template-areas: 
+      ". ."
+      ". ."
+      ". ."; 
+  }
+
+  .gridRightAlighCol {
+    text-align: right;
+  }
+
+  .freelancerJobDetailButtonGrid  {
+    display: grid; 
+    grid-template-columns: 200px 200px 300px; 
+    grid-template-rows: 100px min-content; 
+    gap: 4px 4px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."; 
+  }

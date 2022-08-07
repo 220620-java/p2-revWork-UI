@@ -43,17 +43,19 @@ $(function () {
 
 
   // Load the edit profile template into the page.
+  loadPageAsync("../templates/freelancer-profile-edit.html",loadProfileEditCallback);
 
   function loadProfileEditCallback(data) {
-      $("#profileViewAndEditContent").html(data);
+    $("#profileViewAndEditContent").html(data);
 
-      $("#profileEditBackButton").click(function(){
-        showContent(pageList.viewAllProfiles);
-      });
-    
+    $("#profileEditBackButton").click(function(){
+      showContent(pageList.viewAllProfiles);
+    });
+
+    $("#freelancerEditProfileCancelButton").click(cancelProfileEdit);
+    $("#freelancerEditProfileUpdateButton").click(updateFreelancerProfile);
+    $("#freelancerEditProfileDeleteButton").click(deleteFreelancerProfile);
   }
-
-  loadPageAsync("../templates/freelancer-profile-edit.html",loadProfileEditCallback);
 
 
   // Load the create profile template into the page.
@@ -64,6 +66,22 @@ $(function () {
     $("#profileCancelButton").click(function(){
       showContent(pageList.noContent);
     });
+
+    $("#createProfileContent").on("input",validateAddProfileForm);
+    $("#freelancerCreateProfileCreateButton").click(submitNewProfile);
+
+    // $("#employerCreateJobDiv").on("input",validateAddJobForm);
+
+ 
+    
+
+    // $("#employerCreateJobButton").click(submitNewJob);
+
+    // $("#employerCreateJobCancelButton").click(function () {
+    //   showContent(employerPageList.default);
+    // });
+
+
   }
 
   loadPageAsync("../templates/create-profile.html",loadCreateProfileCallback);
@@ -83,63 +101,48 @@ $(function () {
 
   // Load the job details stuff.
 
-  function loadJobApplicationDataIntoForm(){
-    let applyContainer = $("#jobApplicationContainer");
-    let jobData = applyContainer.data("mydata");
+  // function loadJobApplicationDataIntoForm(){
+  //   let applyContainer = $("#jobApplicationContainer");
+  //   let jobData = applyContainer.data("mydata");
 
-    let jobObject = JSON.parse(jobData);
+  //   let jobObject = JSON.parse(jobData);
 
-    // <p>Employer Name: <span id="jobApplicationEmplyerName"></span></p>
-    // <p>Job Title: <span id="jobApplicationJobTitle"></span></p>
-    // <p>Required skills: <span id="jobApplicationRequiredSkills"></span></p>
-    // <p>Description: <span id="jobApplicationJobDescription"></span></p>
-    // <p>Pay Rate: <span id="jobApplicationPayRate"></span></p>
+  //   // <p>Employer Name: <span id="jobApplicationEmplyerName"></span></p>
+  //   // <p>Job Title: <span id="jobApplicationJobTitle"></span></p>
+  //   // <p>Required skills: <span id="jobApplicationRequiredSkills"></span></p>
+  //   // <p>Description: <span id="jobApplicationJobDescription"></span></p>
+  //   // <p>Pay Rate: <span id="jobApplicationPayRate"></span></p>
 
-    //{"id":null,"name":"a","email":"b","username":"c","password":"d"},
-    //"name":"job","skills":"req skills","description":"desc","payrate":"12.2","istaken":null}
+  //   //{"id":null,"name":"a","email":"b","username":"c","password":"d"},
+  //   //"name":"job","skills":"req skills","description":"desc","payrate":"12.2","istaken":null}
 
-    $("#jobApplicationEmplyerName").text(jobObject["employerid"]["name"]);
-    $("#jobApplicationJobTitle").text(jobObject["name"]);
-    $("#jobApplicationRequiredSkills").text(jobObject["skills"]);
-    $("#jobApplicationJobDescription").text(jobObject["description"]);
-    $("#jobApplicationPayRate").text(jobObject["payrate"]);
+  //   $("#jobApplicationEmplyerName").text(jobObject["employerid"]["name"]);
+  //   $("#jobApplicationJobTitle").text(jobObject["name"]);
+  //   $("#jobApplicationRequiredSkills").text(jobObject["skills"]);
+  //   $("#jobApplicationJobDescription").text(jobObject["description"]);
+  //   $("#jobApplicationPayRate").text(jobObject["payrate"]);
 
-    console.log(jobData);
-  }
+  //   console.log(jobData);
+  // }
+
+
+  // Load the Job Details Page
+  loadPageAsync("../templates/job-details.html",loadJobDetailsCallback);
 
   function loadJobDetailsCallback(data) {
     $("#jobDetailsContent").html(data);
 
-    $("#jobDetailsBackButton").click(function(){
+    $("#freelancerJobDetailsBackButton").click(function(){
       showContent(pageList.jobContent);
     });
 
-    $("#jobDetailsApplyButton").click(function(){
-      loadJobApplicationDataIntoForm();
+    $("#freelancerJobDetailsApplyButton").click(function(){
+      //loadJobApplicationDataIntoForm();
       showContent(pageList.jobApplication);
     });
   }
 
-  loadPageAsync("../templates/job-details.html",loadJobDetailsCallback);
 
-    // function loadLogoutDialog() {
-
-    //     $.get("../templates/freelancer-logout-dialog.html", function (data) {
-    //         let dialogDiv = document.createElement('div');
-    //         dialogDiv.innerHTML = data;
-
-    //         $("#dialogContainer").append(dialogDiv);
-
-    //         $("#freelancerLogoutDialog").dialog({
-    //             autoOpen: false 
-    //         });
-
-    //         $("#logoutButton").click(showLogoutDialog);
-    
-    //     });
-
-    // }
-    
 
 
     $.get("../templates/freelancer-header.html", function (data) {

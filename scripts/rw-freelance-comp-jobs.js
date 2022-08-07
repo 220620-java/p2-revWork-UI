@@ -10,11 +10,50 @@ function configurejobDetail(nodeObject, jobObject) {
     
 }
 
-function configureJobDiv(nodeObject, jobObject) {
-    nodeObject.find(".jobListFirstPar").text(jobObject['name']);
+// function configureJobDiv(nodeObject, jobObject) {
+//     nodeObject.find(".jobListFirstPar").text(jobObject['name']);
 
+// }
+
+function showJobDetailPage(event) {
+    // let msg = "detail ";
+    // msg += job['name'];
+    // msg += " clicked";
+    // console.log(msg);
+    // //viewJobs();
+
+
+
+
+
+    // let jelem = $( event.target );
+    // console.log("stored data:" + jelem.data("mydata"));
+
+    // let reconstructedJob = JSON.parse(jelem.data("mydata"));
+    
+    // let applyContainer = $("#jobApplicationContainer");
+    // applyContainer.data("mydata",jelem.data("mydata"));
+
+
+
+
+
+    // configurejobDetail(detailNode,reconstructedJob);
+
+    let jelem = $( event.target );
+    let pageData = jelem.data("mydata");
+    let job = JSON.parse(pageData);
+
+    let detailsPage = $("#freelancerJobDetailsPage");
+    detailsPage.data("mydata",pageData);
+
+    $("#freelancerJobDetailsJobTitle").text(job["name"]);
+    $("#freelancerJobDetailsRequiredSkills").text(job["skills"]);
+    $("#freelancerJobDetailsJobDescription").text(job["description"]);
+    $("#freelancerJobDetailsJobPay").text(job["payrate"]);
+
+    showContent(pageList.jobDetailsContent);
 }
-
 
 
 function loadJobsIntoPage(response) {
@@ -24,10 +63,9 @@ function loadJobsIntoPage(response) {
     let len = response.length;
     let mst = "There are " + len + " jobs available";
 
+    loadPageAsync("../templates/jobtemplate.html", lodeJobTemplateCallback);
 
-
-
-
+    let i = 1;
     function lodeJobTemplateCallback(data) {
         $("#employerJobListDiv").empty();
 
@@ -39,45 +77,26 @@ function loadJobsIntoPage(response) {
             console.log('adding' + key + ' -> ' + job[key]);
           }
 
-
-
           $("#freelancerJobContent").append(data);
 
           let addedNode = $( "#freelancerJobContent").children().last();
-          let detailNode = $( "#jobDetailsContent");
 
-          configureJobDiv(addedNode,job);
 
-          let detailButton = addedNode.find(".jobListDetailButton");
+          i = (i + 1) % 2;
+
+          if ( i ) {
+              $(addedNode).addClass("profileListOdd");
+          }
+          else {
+              $(addedNode).addClass("profileListEven");
+          }
+
+          addedNode.find(".freelancerJobListJobName").text(job["name"]);
+          addedNode.find(".freelancerJobListJobSkills").text(job["skills"]);
+          let detailButton = addedNode.find(".freelancerJobListDetailsButton");
+
           detailButton.data('mydata',JSON.stringify(job));
-
-          addedNode.find(".jobListDetailButton").click(function (event) {
-                    let msg = "detail ";
-                    msg += job['name'];
-                    msg += " clicked";
-                    console.log(msg);
-                    //viewJobs();
-
-
-
-
-
-                    let jelem = $( event.target );
-                    console.log("stored data:" + jelem.data("mydata"));
-
-                    let reconstructedJob = JSON.parse(jelem.data("mydata"));
-                    
-                    let applyContainer = $("#jobApplicationContainer");
-                    applyContainer.data("mydata",jelem.data("mydata"));
-
-
-
-
-
-                    configurejobDetail(detailNode,reconstructedJob);
-
-                    showContent(pageList.jobDetailsContent);
-          });
+          detailButton.click(showJobDetailPage);
         }
 
         showContent(pageList.jobContent);
@@ -88,37 +107,7 @@ function loadJobsIntoPage(response) {
 
     console.log(mst); // after we use JSON.parse (now it's an object)
 
-    loadPageAsync("../templates/jobtemplate.html",lodeJobTemplateCallback);
-
-    // for (let i = 0; i < 3; ++i) {
-
-    //     $.get("../templates/jobtemplate.html", function (data) {
-    //     $("#freelancerJobContent").append(data);
-
-    //     // $( "#mainContent .jobListDetailButton:last-child" ).click(function () {
-    //     //         let msg = "detail ";
-    //     //         msg += i;
-    //     //         msg += " clicked";
-    //     //         console.log(msg);
-    //     //         //viewJobs();
-    //     //       });
-
-    //     $( "#freelancerJobContent").children().last().find(".jobListDetailButton").click(function () {
-    //                 let msg = "detail ";
-    //                 msg += i;
-    //                 msg += " clicked";
-    //                 console.log(msg);
-    //                 //viewJobs();
-
-
-    //                 showContent(pageList.jobDetailsContent);
-    //             });
-
-    //     });
-
-    // }
-
-
+    
 
 }
 

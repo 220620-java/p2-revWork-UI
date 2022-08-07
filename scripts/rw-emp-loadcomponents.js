@@ -51,6 +51,7 @@ $(function () {
     $("#employerPageNavigation").html(componentHtml);
 
     $("#empNavCreateJob").click(function () {
+      clearCreateJobForm();
       showContent(employerPageList.createJob);
     });
 
@@ -76,9 +77,12 @@ $(function () {
   function loadCreateJobCallback(componentHtml) {
     $("#employerCreateJobDiv").html(componentHtml);
 
-    $("#employerCreateJobButton").click(function () {
-      //showContent(employerPageList.createJob);
-    });
+    $("#employerCreateJobDiv").on("input",validateAddJobForm);
+
+ 
+    
+
+    $("#employerCreateJobButton").click(submitNewJob);
 
     $("#employerCreateJobCancelButton").click(function () {
       showContent(employerPageList.default);
@@ -86,7 +90,7 @@ $(function () {
 
   }
 
-  loadPageAsync('../templates/emp-create-jub.html', loadCreateJobCallback);
+  loadPageAsync('../templates/emp-create-job.html', loadCreateJobCallback);
 
 
   // Load the Job Application list template

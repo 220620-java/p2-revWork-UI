@@ -3,13 +3,18 @@ const pageList = {
     noContent: 'noFreelancerContent',
     jobContent: 'freelancerJobContent',
     jobDetailsContent : 'jobDetailsContent',
+    jobApplication:'applyForJobContent',
 
     viewAllProfiles: 'profilesListContent',
     editProfile : 'profileViewAndEditContent',
+    profileCreated : 'profileCreatedContent',
+    profileDeleted : 'profileDeletedContent',
+    
+
 
     createProfile:'createProfileContent',
 
-    jobApplication:'applyForJobContent'
+    
   };
 
 
@@ -19,7 +24,8 @@ function registerComponents() {
         viewJobs();
       });
       $("#freeNavCreateProfile").click(function () {
-        createProfile();
+        clearCreateProfileForm();
+        showCreateProfilePage();
       });
       $("#freeNavListAllProfileLink").click(function () {
 

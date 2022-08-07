@@ -28,3 +28,18 @@ function parseJwt(token) {
 
     return payloadObject;
 };
+
+function getIdFromJwt(token) {
+
+    let jwtClaims = parseJwt(token);
+
+    let id = -1;
+
+    if ('id' in jwtClaims) {
+        id = jwtClaims['id'];
+
+        //console.log('id of emplyer is: ' + id);
+    }
+
+    return id;
+}
