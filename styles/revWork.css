@@ -143,9 +143,28 @@ clear: both;
   .freelancerJobDetailButtonGrid  {
     display: grid; 
     grid-template-columns: 200px 200px 300px; 
-    grid-template-rows: 100px min-content; 
+    grid-template-rows: min-content; 
     gap: 4px 4px; 
     grid-template-areas: 
       ". . ."
       ". . ."; 
   }
+
+  .freelancerJobApplicationControlsGrid {
+    display: grid; 
+    grid-template-columns: 200px 400px 1fr; 
+    grid-template-rows: min-content 300px; 
+    gap: 4px 4px; 
+    grid-template-areas: 
+      ". . ."
+      ". . ."; 
+  }
+
+.freelancerJobApplicationSpacerGrid {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 25px; 
+  gap: 4px 4px; 
+  grid-template-areas: 
+    "."; 
+}

@@ -1,11 +1,14 @@
 let autoCompQueryActive = false;
 
 function universityAutoComp() {
+
+    console.log("university auto comp in progress");
+
     if (autoCompQueryActive) {
         return;
     }
 
-    const textbox = document.getElementById('universityAutoCompControl');
+    const textbox = document.getElementById('freelancerCreateProfileCollegeText');
     const queryString = textbox.value;
 
     if (queryString.length <= 3) {
@@ -22,9 +25,13 @@ function universityAutoComp() {
     xhttp.onreadystatechange = receiveData;
 
     let url = universityApiURL;
-    url += '/search?name=';
+    url += 'search?name=';
     url += encodeURIComponent(queryString);
     url += '&alpha_two_code=US';
+
+
+    console.log(url);
+
 
     // STEP 3: Open the request
     xhttp.open('GET', url);
@@ -61,7 +68,7 @@ function universityAutoComp() {
 
                 //outArray = ['a','b','c'];
 
-                $("#universityAutoCompControl").autocomplete({
+                $("#freelancerCreateProfileCollegeText").autocomplete({
                     source: outArray
                 }, {});
 

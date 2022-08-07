@@ -69,6 +69,9 @@ $(function () {
 
     $("#createProfileContent").on("input",validateAddProfileForm);
     $("#freelancerCreateProfileCreateButton").click(submitNewProfile);
+    $("#freelancerCreateProfileCollegeText").on("input",universityAutoComp);
+    
+    
 
     // $("#employerCreateJobDiv").on("input",validateAddJobForm);
 
@@ -88,16 +91,21 @@ $(function () {
 
 
   // load the job application templage into the page.
+  loadPageAsync("../templates/jobapplication.html",loadJobApplicationCallback);
 
   function loadJobApplicationCallback(data) {
     $("#applyForJobContent").html(data);
 
-    $("#jobApplicationBackButton").click(function(){
-      showContent(pageList.jobDetailsContent);
-    });
-  }
+    $("#applyForJobContent").on("input",freelancerValidateJobApplication);
 
-  loadPageAsync("../templates/jobapplication.html",loadJobApplicationCallback);
+    $("#freelancerJobApplicationBackButton").click(function(){
+      showContent(pageList.jobContent);
+    });
+
+    $("#freelancerJobApplicationApplyButton").click(freelancerSubmitJobApplication);
+
+
+  }
 
   // Load the job details stuff.
 
@@ -137,8 +145,9 @@ $(function () {
     });
 
     $("#freelancerJobDetailsApplyButton").click(function(){
+      freelancerJobDetailApplyButtion();
       //loadJobApplicationDataIntoForm();
-      showContent(pageList.jobApplication);
+
     });
   }
 

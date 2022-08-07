@@ -163,6 +163,67 @@ function LoadProfilesIntoPage(contentHtml, profiles) {
     showContent(pageList.viewAllProfiles);
 }
 
+function getAllFreelancerProfiles(callback) {
+
+    let jwtToken = getCookie('jwt');
+
+    let id = getIdFromJwt(jwtToken);
+
+    if ( id == -1 ) {
+        console.log("invalid jwt");
+        return;
+    }
+
+    // 4 steps to making an AJAX call
+    // STEP 1: Create an XML Http Request object
+    let xhttp = new XMLHttpRequest();
+
+    // STEP 2: Set a callback function for the readystatechange event
+    xhttp.onreadystatechange = receiveData;
+    //xhttp.addEventListener('readystatechange', receiveData);
+
+    // STEP 3: Open the request
+    let url = restURL;
+    url += '/freelancer/';
+    url += id;
+    url += '/profiles';
+    xhttp.open('GET', url );
+    let bearerToken = "Bearer " + jwtToken;
+    xhttp.setRequestHeader("Authorization", bearerToken);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    
+    // STEP 4: Send the request
+    xhttp.send();
+
+    // This needs to be an inner function so that it has closure to xhttp.
+    function receiveData() {
+
+        if (xhttp.readyState === 4) { 
+
+
+            console.log("status is:" + xhttp.status );
+
+
+
+            if ( 200 <= xhttp.status && xhttp.status < 300 ) { // check if it was successful
+                // Ready state is DONE, HTTP status code is "OK"
+                // responseText property is the response body as a string
+
+                let response = xhttp.responseText;
+                console.log("profile retrieved");
+                callback(response);
+                
+
+            } else {
+                console.log("profile retieval failed");
+            }
+        } else {
+
+        }
+    } 
+
+}
+
 
 function viewListofAllProfiles() {
 
@@ -183,69 +244,10 @@ function viewListofAllProfiles() {
     function getProfileTemplateCallback(data) {
         console.log("in getProfileTemplateCallback function");
 
-        let jwtToken = getCookie('jwt');
-
-        let id = getIdFromJwt(jwtToken);
-    
-        if ( id == -1 ) {
-            console.log("invalid jwt");
-            return;
-        }
-
-        // 4 steps to making an AJAX call
-        // STEP 1: Create an XML Http Request object
-        let xhttp = new XMLHttpRequest();
-
-        // STEP 2: Set a callback function for the readystatechange event
-        xhttp.onreadystatechange = receiveData;
-        //xhttp.addEventListener('readystatechange', receiveData);
-
-        // STEP 3: Open the request
-        let url = restURL;
-        url += '/freelancer/';
-        url += id;
-        url += '/profiles';
-        xhttp.open('GET', url );
-        let bearerToken = "Bearer " + jwtToken;
-        xhttp.setRequestHeader("Authorization", bearerToken);
-        xhttp.setRequestHeader("Content-Type", "application/json");
-        
-        // STEP 4: Send the request
-        xhttp.send();
-
-        // This needs to be an inner function so that it has closure to xhttp.
-        function receiveData() {
-
-            if (xhttp.readyState === 4) { 
-
-
-                console.log("status is:" + xhttp.status );
-
-
-
-                if ( 200 <= xhttp.status && xhttp.status < 300 ) { // check if it was successful
-                    // Ready state is DONE, HTTP status code is "OK"
-                    // responseText property is the response body as a string
-
-                    let response = xhttp.responseText;
-                    console.log("profile retrieved");
-
-                    LoadProfilesIntoPage(data, response);
-
-                } else {
-                    console.log("profile retieval failed");
-                }
-            } else {
-
-            }
-        } 
-
-
-
+        getAllFreelancerProfiles(function(response){
+            LoadProfilesIntoPage(data, response);
+        });
     }
-
-
-
 }
 
 

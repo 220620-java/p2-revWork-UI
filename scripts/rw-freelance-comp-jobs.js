@@ -1,8 +1,185 @@
 
+function addProfilesToJobApplicationPage(response) {
 
 
 
 
+
+    //console.log('we have profiles:' + response);
+
+    let profilesObject = JSON.parse(response);
+
+    if ( profilesObject.length == 0 ) {
+        $('#freelancerJobApplicationButtonSet').hide();
+        $('#freelancerJobApplicationErrorMessage').show();
+    }
+
+    let profileSelect = $('#freelancerJobApplicationProfileSelect');
+
+    for ( let profile of profilesObject ) {
+
+        profileSelect.append($('<option>', {
+            value: profile["id"],
+            text: profile["name"]
+        }));
+    }
+
+
+}
+
+
+function freelancerResetJobApplication() {
+
+    let detailsPage = $("#freelancerJobDetailsPage");
+    let jobString = detailsPage.data("mydata");
+    let job=JSON.parse(jobString);
+
+    $("#freelancerJobApplicationJobTitle").text(job["name"]);
+    $("#freelancerJobApplicationRequiredSkills").text(job["skills"]);
+    $("#freelancerJobApplicationJobDescription").text(job["description"]);
+    $("#freelancerJobApplicationJobPay").text(job["payrate"]);
+
+    let profileSelect = $('#freelancerJobApplicationProfileSelect');
+
+    profileSelect.empty();
+
+
+
+    //<option disabled selected value="1">Select a profile for this application</option>
+
+    profileSelect.append($('<option>', {
+        value: 0,
+        selected:true,
+        disabled : true,
+        text: 'Select a profile for this application'
+    }));
+
+
+    getAllFreelancerProfiles(addProfilesToJobApplicationPage);
+
+
+    
+
+    $("#freelancerJobApplicationCoverLetter").val("");
+
+
+    
+
+    $('#freelancerJobApplicationApplyButton').prop('disabled', true);
+    //getAllFreelancerProfiles(addProfilesToJobApplicationPage);
+
+    $('#freelancerJobApplicationButtonSet').show();
+    $('#freelancerJobApplicationErrorMessage').hide();
+
+
+}
+
+
+function freelancerValidateJobApplication() {
+
+    let coverLetter = $("#freelancerJobApplicationCoverLetter").val();
+    let profileToUse = $("#freelancerJobApplicationProfileSelect").val();
+
+    if ( coverLetter != "" && profileToUse != null) {
+        $('#freelancerJobApplicationApplyButton').prop('disabled', false);
+    }
+    else {
+        $('#freelancerJobApplicationApplyButton').prop('disabled', true);
+    }
+
+    //let optionText = $("#freelancerJobApplicationProfileSelect option:selected").text();
+
+
+    //console.log("validating job application" + coverLetter + profileToUse+optionText);
+}
+
+function freelancerSubmitJobApplication() {
+    console.log("submitting job application");
+
+    let detailsPage = $("#freelancerJobDetailsPage");
+    let jobString = detailsPage.data("mydata");
+    let job=JSON.parse(jobString);
+
+    //$("#freelancerJobApplicationJobTitle").text(job["name"]);
+    let optionText = $("#freelancerJobApplicationProfileSelect option:selected").text();
+    let profileToUse = $("#freelancerJobApplicationProfileSelect").val();
+    let coverLetter = $("#freelancerJobApplicationCoverLetter").val();
+
+    // console.log("portfolioid:" +  profileToUse);
+    // console.log("name:" +  optionText);
+
+    // console.log("job id:" +  job["id"]);
+
+    let applicaiontJson = 
+    {
+
+        "jobid":{
+            "id":job["id"]
+        },
+        "portfolioid":{
+            "id":profileToUse
+        },
+        "coverletter":coverLetter,
+        "name":optionText
+    };
+
+    let myJSON = JSON.stringify(applicaiontJson);
+    let jwtToken = getCookie('jwt');
+
+   // 4 steps to making an AJAX call
+    // STEP 1: Create an XML Http Request object
+    let xhttp = new XMLHttpRequest();
+
+    // STEP 2: Set a callback function for the readystatechange event
+    xhttp.onreadystatechange = receiveData;
+    //xhttp.addEventListener('readystatechange', receiveData);
+
+    // STEP 3: Open the request
+    let url = restURL;
+    url += '/freelancer/submit_app';
+    xhttp.open('POST', url );
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    let bearerToken = "Bearer " + jwtToken;
+    xhttp.setRequestHeader("Authorization", bearerToken);
+
+    
+    // STEP 4: Send the request
+    //xhttp.send();
+    xhttp.send(myJSON);
+    // xhttp.send(JSON.stringify(myObj));
+    // xhttp.send('{"username":"", "password":""}');
+
+    // This needs to be an inner function so that it has closure to xhttp.
+    function receiveData() {
+
+        if (xhttp.readyState === 4) { 
+
+
+            console.log("status is:" + xhttp.status );
+
+
+            if ( 200 <= xhttp.status && xhttp.status < 300 ) { // check if it was successful
+                // Ready state is DONE, HTTP status code is "OK"
+                // responseText property is the response body as a string
+                console.log("profile created");
+
+                showContent(pageList.jonApplicationSubmitted);
+
+            } else {
+                console.log("profile creation failed");
+            }
+        } else {
+
+        }
+    } 
+
+}
+
+
+function freelancerJobDetailApplyButtion(event) {
+    freelancerResetJobApplication();
+    showContent(pageList.jobApplication);
+}
 
 
 function configurejobDetail(nodeObject, jobObject) {

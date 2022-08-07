@@ -4,6 +4,7 @@ const pageList = {
     jobContent: 'freelancerJobContent',
     jobDetailsContent : 'jobDetailsContent',
     jobApplication:'applyForJobContent',
+    jonApplicationSubmitted:'applicationHasBeenSubmitted',
 
     viewAllProfiles: 'profilesListContent',
     editProfile : 'profileViewAndEditContent',

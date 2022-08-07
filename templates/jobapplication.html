@@ -1,12 +1,44 @@
-<div id="jobApplicationContainer">
-  <p id="jobApplicationFirstPar">Job Application</p>
+<div id="freelancerJobApplicationPage" class="fogBackground">
+  <div class="freelancerJobGrid">
+      <p class="gridRightAlighCol"><b>Job Title:</b></p>
+      <p id="freelancerJobApplicationJobTitle"></p>
+      <p class="gridRightAlighCol"><b>Description:</b></p>
+      <p id="freelancerJobApplicationJobDescription"></p>
+      <p class="gridRightAlighCol"><b>Required Skills:</b></p>
+      <p id="freelancerJobApplicationRequiredSkills"></p>
+      <p class="gridRightAlighCol"><b>Pay:</b></p>
+      <p id="freelancerJobApplicationJobPay"></p>
+  </div>
 
-  <p>Employer Name: <span id="jobApplicationEmplyerName"></span></p>
-  <p>Job Title: <span id="jobApplicationJobTitle"></span></p>
-  <p>Required skills: <span id="jobApplicationRequiredSkills"></span></p>
-  <p>Description: <span id="jobApplicationJobDescription"></span></p>
-  <p>Pay Rate: <span id="jobApplicationPayRate"></span></p>
-  <p>
-    <input id="jobApplicationBackButton" type="button" value="Back">
-  </p>
+  <div class="freelancerJobApplicationSpacerGrid"><p></p></div>
+  <hr>
+  <div class="freelancerJobApplicationSpacerGrid"><p></p></div>
+  
+  <div class="freelancerJobApplicationControlsGrid">
+    <p class="gridRightAlighCol"><b>Profile:</b></p>
+    
+    <select  id="freelancerJobApplicationProfileSelect">
+      <option disabled selected value="1">Select a profile for this application</option>
+    </select>
+    <p></p>
+    <p class="gridRightAlighCol"><b>Cover Letter:</b></p>
+    <textarea id="freelancerJobApplicationCoverLetter" style="resize: none;"></textarea> 
+    <p></p>
+  </div>
+
+  <div class="freelancerJobApplicationSpacerGrid"><p></p></div>
+  <hr>
+  <div class="freelancerJobApplicationSpacerGrid"><p></p></div>
+
+  <div class="freelancerJobDetailButtonGrid" id = "freelancerJobApplicationButtonSet">
+    <button type="button" id="freelancerJobApplicationBackButton">Cancel</button>
+    <p></p>
+    <button type="button" id="freelancerJobApplicationApplyButton">Submit Application</button>
+  </div>
+
+  <div class = "initiallHidden" id="freelancerJobApplicationErrorMessage">
+    <p>You need to create at least one profile before you can submit a job application.</p>
+  </div>
+
+
 </div>
