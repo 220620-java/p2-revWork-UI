@@ -105,15 +105,32 @@ $(function () {
   function loadJobApplicationDetailsCallback(componentHtml) {
     $("#employerApplicationDetailDiv").html(componentHtml);
 
-    $("#empJobAppAcceptButton").click(employerJobApplicationAccept);
+    $("#freelancerJobApplicationAcceptButton").click(employerJobApplicationAccept);
 
-    $("#empJobAppBackButton").click(employerJobApplicationBack);
+    $("#freelancerJobApplicationBackButton").click(employerJobApplicationBack);
   }
 
   loadPageAsync('../templates/emp-job-applicationdetails.html', loadJobApplicationDetailsCallback);
 
 
-      //<div class="initiallHidden" id="employerJobApplicationListDiv"></div>
-      //<div class="initiallHidden" id="employerApplicationDetailDiv"></div>
+  // Load the jobdetailspage
+  loadPageAsync('../templates/emp-job-details.html', loadJobDetailsCallback);
+
+  function loadJobDetailsCallback(componentHtml){
+    $("#employerJobDetailsDiv").html(componentHtml);
+
+    $("#employerJobDetailsBackButton").click( function() {
+      showContent(employerPageList.viewJobs);
+    });
+    $("#employerJobDetailsApplyButton").click(viewEmployerJobApplications);
+    $("#employerJobDetailsDeleteButton").click(employerDeleteJob);
+    $("#employerJobDetailsEditButton").click(employerEditJob);
+
+    $("#employerJobDetailsEditButton").prop('disabled', true);
+    
+    
+    
+
+  }
 
 });

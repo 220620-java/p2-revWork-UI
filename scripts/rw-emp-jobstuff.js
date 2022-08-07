@@ -133,6 +133,8 @@ function submitNewJob(){
                 // responseText property is the response body as a string
                 console.log("job created");
 
+                showContent(employerPageList.jobCreated);
+
             } else {
                 console.log("job creation failed");
             }

@@ -28,19 +28,9 @@ function validateLoginDialog() {
     }
 }
 
-function login(){
-    console.log('hello from login');
 
-    let username = $("#loginDialogUsernameText").val();
-    let password = $("#loginDialogPasswordText").val();
-
-    //let loginForFreelancer = $("#loginDialogFreelancerRadio").val();
-    //let loginForEmployer = $("#loginDialogEmployerRadio").val();
-    //let loginRole = $("input:radio[name ='loginTypeRadioGroup']:checked").val();
-
-    let loginRole = $('#loginDialogDropdown').find(":selected").text().toLowerCase();
-
-    
+function loginWithUsernameAndPassword(username,password, loginRole) {
+ 
 
     console.log('username: ' + username);
     console.log('password: ' + password);
@@ -113,4 +103,21 @@ function login(){
 
         }
     } 
+
+}
+
+
+function login(){
+    console.log('hello from login');
+
+    let username = $("#loginDialogUsernameText").val();
+    let password = $("#loginDialogPasswordText").val();
+
+    //let loginForFreelancer = $("#loginDialogFreelancerRadio").val();
+    //let loginForEmployer = $("#loginDialogEmployerRadio").val();
+    //let loginRole = $("input:radio[name ='loginTypeRadioGroup']:checked").val();
+
+    let loginRole = $('#loginDialogDropdown').find(":selected").text().toLowerCase();
+
+    loginWithUsernameAndPassword(username,password,loginRole);
 }

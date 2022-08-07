@@ -150,7 +150,7 @@ function LoadProfilesIntoPage(contentHtml, profiles) {
             $(addedNode).addClass("profileListEven");
         }
 
-        profiledListViewDetails
+        //profiledListViewDetails
         let button = addedNode.find(".profileListDetailsButton");
 
 

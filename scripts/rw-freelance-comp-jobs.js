@@ -306,7 +306,11 @@ function viewJobs() {
     xhttp.onreadystatechange = receiveData;
 
     // STEP 3: Open the request
-    xhttp.open('GET', 'http://127.0.0.1:8080/job' );
+
+    let url = restURL;
+    url += '/job';
+
+    xhttp.open('GET', url );
     xhttp.setRequestHeader("Content-Type", "application/json");
     // STEP 4: Send the request
     xhttp.send();

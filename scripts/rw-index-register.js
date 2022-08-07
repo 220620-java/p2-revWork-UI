@@ -99,27 +99,33 @@ function registerNewAccount(){
         if (xhttp.readyState === 4) { 
 
 
-            if (xhttp.status === 200) { // check if it was successful
+            if (200 <= xhttp.status && xhttp.status < 300) { // check if it was successful
                 // Ready state is DONE, HTTP status code is "OK"
                 // responseText property is the response body as a string
-                let response = xhttp.responseText;
-                console.log("response:" + response); // before we use JSON.parse (still a string)
+                // let response = xhttp.responseText;
+                // console.log("response:" + response); // before we use JSON.parse (still a string)
 
-                const myArray = response.split(":"); 
-                console.log(myArray[1]);
+                // const myArray = response.split(":"); 
+                // console.log(myArray[1]);
 
-                let jwtToken = myArray[1];
+                // let jwtToken = myArray[1];
 
-                setCookie('jwt',jwtToken,365);
+                // setCookie('jwt',jwtToken,365);
 
-                if( freelancerRegister ) {
-                    window.location.replace('freelancer.html');
-                }
-                else {
-                    window.location.replace('employer.html');
-                }
+                // if( freelancerRegister ) {
+                //     window.location.replace('freelancer.html');
+                // }
+                // else {
+                //     window.location.replace('employer.html');
+                // }
+
+                loginWithUsernameAndPassword(username,password,loginRole);
+
 
             } else {
+
+                console.log("registation failed. status:" + xhttp.status);
+
                 setRegisterErrorMessage("The username is already taken. Please try again.")
             }
         } else {

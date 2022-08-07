@@ -55,6 +55,9 @@ $(function () {
     $("#freelancerEditProfileCancelButton").click(cancelProfileEdit);
     $("#freelancerEditProfileUpdateButton").click(updateFreelancerProfile);
     $("#freelancerEditProfileDeleteButton").click(deleteFreelancerProfile);
+
+
+    $('#freelancerEditProfileDeleteButton').prop('disabled', true);
   }
 
 
