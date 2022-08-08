@@ -152,6 +152,8 @@ function loadJobApplicationsIntoPage(contentHtml,applist) {
 
   console.log(apps.length + "total apps");
 
+  console.log(applist);
+
   let i = 0;
 
   for ( let app of apps ) {
@@ -172,8 +174,11 @@ function loadJobApplicationsIntoPage(contentHtml,applist) {
 
       let button = addedNode.find(".freelancerJobListDetailsButton");
 
-      addedNode.find(".freelancerJobListJobName").text(app["name"]);
-      addedNode.find(".freelancerJobListJobSkills").text("anything");
+      let port = app["portfolioid"];
+      let freel = port["freelancerid"];
+
+      addedNode.find(".freelancerJobListJobName").text(freel["name"]);
+      addedNode.find(".freelancerJobListJobSkills").text(port["email"]);
       button.on("click",employerViewApplicationDetail);
       button.data("mydata",JSON.stringify(app));
   }
