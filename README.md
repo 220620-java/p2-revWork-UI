@@ -17,7 +17,7 @@ view the list of available jobs, and apply for a job.
 
 ![freelancer page](/screenshot3.png?raw=true "Freelancer page")
 
-The menu that allows All of those tasks is on the left side of the page.
+The menu that allows all of those tasks is on the left side of the page.
 Once a menu option is selected, all tasks are done on the same page by loading
 the smaller HTML fragments and replacing portions of the main page as needed to
 accomplish those tasks. The page flows for the task currently available looks
