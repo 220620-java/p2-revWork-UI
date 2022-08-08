@@ -63,6 +63,16 @@ function loginWithUsernameAndPassword(username,password, loginRole) {
 
     xhttp.open('POST', url );
     xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhttp.setRequestHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
+    xhttp.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+
+
+    // header.Add("Access-Control-Allow-Origin", "*")
+    // header.Add("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+    // header.Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+
+
     // STEP 4: Send the request
     //xhttp.send();
     xhttp.send(myJSON);

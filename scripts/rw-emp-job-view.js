@@ -132,13 +132,13 @@ function employerViewApplicationDetail(event) {
   page.find(".employerJobAppDetailFreelancerName").text(freel["name"]);
   page.find(".employerJobAppDetailFreelancerAbout").text(freel["about"]);
   page.find(".employerJobAppDetailExperienceLevel").text(freel["experiencelevel"]);
-  page.find(".employerJobAppDetailProfileName").text(app["name"]);
+  page.find(".employerJobAppDetailProfileName").text(port["name"]);
   page.find(".employerJobAppDetailSkills").text(port["email"]);
   page.find(".employerJobAppDetailCoverLetter").text(app["coverletter"]);
 }
 
 
-
+employerJobAppDetailProfileName
 
 
 function loadJobApplicationsIntoPage(contentHtml,applist) {
