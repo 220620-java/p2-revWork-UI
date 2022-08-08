@@ -137,10 +137,6 @@ function employerViewApplicationDetail(event) {
   page.find(".employerJobAppDetailCoverLetter").text(app["coverletter"]);
 }
 
-
-employerJobAppDetailProfileName
-
-
 function loadJobApplicationsIntoPage(contentHtml,applist) {
 
   console.log()
