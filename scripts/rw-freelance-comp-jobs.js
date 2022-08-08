@@ -308,7 +308,8 @@ function viewJobs() {
     // STEP 3: Open the request
 
     let url = restURL;
-    url += '/job';
+    //url += '/job';
+    url += '/freelancer/get_jobs';
 
     xhttp.open('GET', url );
     xhttp.setRequestHeader("Content-Type", "application/json");

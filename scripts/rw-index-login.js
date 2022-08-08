@@ -57,6 +57,10 @@ function loginWithUsernameAndPassword(username,password, loginRole) {
     // STEP 3: Open the request
     let url = restURL;
     url += '/login';
+
+    console.log("logging into url" + url);
+
+
     xhttp.open('POST', url );
     xhttp.setRequestHeader("Content-Type", "application/json");
     // STEP 4: Send the request
