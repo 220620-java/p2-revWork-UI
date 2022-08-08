@@ -33,6 +33,10 @@ applications, and selecting an application to get the job.
 
 This site makes extensive use of the
 [revWork API](https://github.com/220620-java/p2-revWork-API) to load the
+
+Acknowlegements:
+- The [University Domains and Names Data List & API](https://github.com/Hipo/university-domains-list)
+  is used to allow users to add their school to their profile.
 data for the pages.
 
 The website makes use of JWTs for authentication. However on the client side
